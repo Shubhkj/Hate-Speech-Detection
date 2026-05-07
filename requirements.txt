@@ -1,0 +1,34 @@
+# Core
+python>=3.10
+
+# PyTorch (GPU support – installed separately, see note below)
+#torch
+#torchvision
+#torchaudio
+
+# Transformers & NLP
+transformers>=4.36.0
+tokenizers>=0.15.0
+datasets>=2.16.0
+sentencepiece
+
+# Training utilities
+tqdm
+scikit-learn
+numpy
+pandas
+
+# Explainability (later sprints)
+shap
+captum
+
+# Visualization & analysis
+matplotlib
+seaborn
+
+# Logging & config
+pyyaml
+
+# Jupyter (for review demos)
+notebook
+ipykernel
