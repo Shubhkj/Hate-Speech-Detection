@@ -52,16 +52,52 @@ python test_cuda.py
 python test_setup.py
 ```
 
-## Data notes
+## Datasets
 
-This repository currently ignores large datasets and checkpoint artifacts in version control.
+This project uses multiple publicly available hate speech datasets. Large datasets and checkpoints are ignored in version control.
 
-Expected local paths referenced by scripts include paths under:
+### Jigsaw Toxic Comment Classification Challenge
 
-- `data/`
-- `checkpoints/`
+- **Source**: Kaggle (https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge)
+- **Description**: Multi-label toxic comment classification with 6 toxicity types
+- **Usage**: Binary hate speech detection; used in `training/train_base.py`
+- **Local path**: `data/jigsaw-toxic-comment-classification-challenge/`
+- **Expected file**: `processed/jigsaw_cleaned.csv`
 
-Before running training/evaluation, ensure required processed CSV files exist at the paths used in each script (for example in `training/train_base.py` and `training/train_multitask.py`).
+### HateXplain Dataset
+
+- **Source**: HateXplain GitHub (https://github.com/hate-speech-cnerg/HateXplain)
+- **Description**: Annotated hate speech dataset with target groups and rationale spans
+- **Usage**: Multitask learning (hate label, hate type, target prediction)
+- **Local path**: `data/HateXplain-master/`
+- **Expected file**: `Data/processed/hatexplain_cleaned.csv`
+- **Key features**: Explainability rationales for model interpretation
+
+### GAB & Reddit Hate Speech Dataset
+
+- **Source**: GitHub (https://github.com/emilyemorehouse/gab_reddit_hate_speech_dataset)
+- **Description**: Hate speech samples from social media platforms (GAB and Reddit)
+- **Usage**: Cross-domain evaluation and robustness testing
+- **Local path**: `data/gab_reddit_hate_speech_dataset-main/`
+- **Files**: `gab_dataset.csv`, `reddit_dataset.csv`
+
+### A-Benchmark Dataset
+
+- **Source**: GitHub (https://github.com/varshakishore/An-Empirical-Benchmark-for-Learning-to-Intervene-in-Online-Hate-Speech)
+- **Description**: Benchmark dataset for hate speech intervention and mitigation
+- **Usage**: Evaluation and fairness testing
+- **Local path**: `data/A-Benchmark-Dataset-for-Learning-to-Intervene-in-Online-Hate-Speech-master/`
+
+### Setting up datasets
+
+1. Download each dataset from its source (links above)
+2. Extract into the `data/` directory, preserving folder names
+3. Run preprocessing scripts to generate cleaned CSVs:
+   - `preprocessing/jigsaw_preprocess.py`
+   - `preprocessing/hatexplain_preprocess.py`
+   - `preprocessing/gab_reddit_preprocess.py`
+
+Before running training/evaluation, ensure processed CSV files exist at paths referenced in each script (e.g., `training/train_base.py` and `training/train_multitask.py`).
 
 ## Training examples
 
